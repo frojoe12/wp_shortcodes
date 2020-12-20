@@ -1,0 +1,31 @@
+<?php
+/*
+Plugin Name: Circ Shortcodes
+Description: Custom text shortcodes.
+Version: 1.0
+Author: Channel Digital
+*/
+
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+// add uninstall delete option
+// add option to change to front end
+
+function circular_shortcode_options() {
+    echo "aaa";
+ return null;
+}
+
+function circular_menu() {
+    add_menu_page('Circular Shortcodes','Circular Shortcodes','publish_pages','circular-shortcodes', 'circular_shortcode_options','');
+}
+add_action('admin_menu', 'circular_menu');
+
+function circular_postage_charge() {
+    // postage-charge
+    // access the text from the options database other wise display: (tbc)
+
+	return esc_html("tbc");
+}
+add_shortcode('circular_postage_charge','circular_postage_charge');
+
+?>
