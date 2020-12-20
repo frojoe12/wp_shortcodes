@@ -1,31 +1,50 @@
 <?php
 /*
-Plugin Name: Circ Shortcodes
-Description: Custom text shortcodes.
+Plugin Name: Circular Shortcodes
+Description: Custom text shortcodes 
 Version: 1.0
 Author: Channel Digital
 */
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-// add uninstall delete option
-// add option to change to front end
+
+// add uninstall / delete options from database
 
 function circular_shortcode_options() {
-    echo "aaa";
+    ?>
+    <div class='wrap'>
+        <h1 class='wp-heading'>Circular Shortcodes</h1>
+            <form>
+                <table class='form-table'>
+                    <tbody>
+                        <tr>
+                            <th scope='row'>
+                                <label for='postage_charge'>Postage Charge</label>
+                            </th>
+                        <td>
+                            <input placeholder="eg 4.50" step="0.01" name='postage_charge' type='number' id='postage_charge' value='' class='regular-text'>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <p class='submit'><input type='submit' name='submit' id='submit' class='button button-primary' value='Save Changes'></p>
+        </form>
+    </div>
+    <?php
  return null;
 }
 
 function circular_menu() {
-    add_menu_page('Circular Shortcodes','Circular Shortcodes','publish_pages','circular-shortcodes', 'circular_shortcode_options','');
+    add_menu_page('Circular Shortcodes','Circular Shortcodes','publish_pages','circular-shortcodes', 'circular_shortcode_options','dashicons-edit');
 }
 add_action('admin_menu', 'circular_menu');
 
 function circular_postage_charge() {
     // postage-charge
     // access the text from the options database other wise display: (tbc)
-
 	return esc_html("tbc");
 }
+
 add_shortcode('circular_postage_charge','circular_postage_charge');
 
 ?>
